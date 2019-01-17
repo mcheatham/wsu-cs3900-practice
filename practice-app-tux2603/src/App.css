@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #aaf;
+  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,14 +18,14 @@
   color: white;
 }
 
-.App-link {
-  color: #00f;
+.yellow-and-snow-not-good {
+  color: #fff;
+  font-size: 2em;
   transition: 1s;
 }
 
-.App-link:hover {
-  transform: rotate(360deg) scale(3);
-  color: #ff00ff;
+.yellow-and-snow-not-good:hover {
+  color: #ffff00  ;
 }
 
 @keyframes App-logo-spin {
