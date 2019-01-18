@@ -13,6 +13,7 @@ class ColorLogo extends Component {
   changeColor(e) {
     e.preventDefault();
     var newColor = '#' + Math.floor(Math.random() * (1<<24)).toString(16);
+    console.log("Changing logo color to " + newColor);
     this.setState( state => ({
       color: newColor
     }));

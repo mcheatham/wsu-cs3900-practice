@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ColorLogo from './ColorLogo.js';
-import Square from './Square.js';
 import Board from './Board.js';
 import './App.css';
 

@@ -1,57 +1,84 @@
 import React, { Component } from 'react';
 import Square from './Square.js';
 
-
 class Board extends Component {
+
   constructor(props) {
     super(props);
     this.state = {piece: this.props.piece};
+    global.activeSquare = null;
+  }
+
+  squareClicked(e) {
+    console.log(global)
+    e.preventDefault();
+
+    if(!this.state.isActive) {
+      if(global.activeSquare === null) {
+        this.setState({isActive: true});
+        global.activeSquare = this;
+      }
+
+      else {
+        this.setState({piece: global.activeSquare.state.piece});
+        global.activeSquare.setState({piece: "", isActive: false});
+        global.activeSquare = null;
+      }
+    }
+
+    else {
+      if(this === global.activeSquare) {
+        this.setState({isActive: false});
+        this.setState({piece: ""});
+        global.activeSquare = null;
+      }
+    }
   }
 
   render() {
-    return (<table className="App-board">
+    return (<table className="App-board"><tbody>
 
       <tr>
-        <Square squareColor="light" id='a8' /><Square squareColor="dark" id='b8' /><Square squareColor="light" id='c8' /><Square squareColor="dark"  id='d8' />
-        <Square squareColor="light" id='e8' /><Square squareColor="dark" id='f8' /><Square squareColor="light" id='g8' /><Square squareColor="dark"  id='h8' />
+        <Square piece="♜" squareColor="light" id='a8' clickHandler={this.squareClicked}/><Square piece="♞" squareColor="dark" id='b8' clickHandler={this.squareClicked}/><Square squareColor="light" piece="♝" id='c8' clickHandler={this.squareClicked}/><Square squareColor="dark"  piece="♛" id='d8' clickHandler={this.squareClicked}/>
+        <Square squareColor="light"  piece="♚" id='e8' clickHandler={this.squareClicked}/><Square squareColor="dark"  piece="♝" id='f8' clickHandler={this.squareClicked}/><Square squareColor="light"  piece="♞" id='g8' clickHandler={this.squareClicked}/><Square squareColor="dark"   piece="♜" id='h8' clickHandler={this.squareClicked}/>
       </tr>
 
       <tr>
-        <Square squareColor="dark" id='a7' /><Square squareColor="light" id='b7' /><Square squareColor="dark" id='c7' /><Square squareColor="light"  id='d7' />
-        <Square squareColor="dark" id='e7' /><Square squareColor="light" id='f7' /><Square squareColor="dark" id='g7' /><Square squareColor="light"  id='h7' />
+        <Square squareColor="dark" piece="♟" id='a7' clickHandler={this.squareClicked}/><Square squareColor="light" piece="♟" id='b7' clickHandler={this.squareClicked}/><Square squareColor="dark" piece="♟" id='c7' clickHandler={this.squareClicked}/><Square squareColor="light" piece="♟" id='d7' clickHandler={this.squareClicked}/>
+        <Square squareColor="dark" piece="♟" id='e7' clickHandler={this.squareClicked}/><Square squareColor="light" piece="♟" id='f7' clickHandler={this.squareClicked}/><Square squareColor="dark" piece="♟" id='g7' clickHandler={this.squareClicked}/><Square squareColor="light" piece="♟" id='h7' clickHandler={this.squareClicked}/>
       </tr>
 
       <tr>
-        <Square squareColor="light" id='a6' /><Square squareColor="dark" id='b6' /><Square squareColor="light" id='c6' /><Square squareColor="dark"  id='d6' />
-        <Square squareColor="light" id='e6' /><Square squareColor="dark" id='f6' /><Square squareColor="light" id='g6' /><Square squareColor="dark"  id='h6' />
+        <Square squareColor="light" id='a6' clickHandler={this.squareClicked}/><Square squareColor="dark" id='b6' clickHandler={this.squareClicked}/><Square squareColor="light" id='c6' clickHandler={this.squareClicked}/><Square squareColor="dark"  id='d6' clickHandler={this.squareClicked}/>
+        <Square squareColor="light" id='e6' clickHandler={this.squareClicked}/><Square squareColor="dark" id='f6' clickHandler={this.squareClicked}/><Square squareColor="light" id='g6' clickHandler={this.squareClicked}/><Square squareColor="dark"  id='h6' clickHandler={this.squareClicked}/>
       </tr>
 
       <tr>
-        <Square squareColor="dark" id='a5' /><Square squareColor="light" id='b5' /><Square squareColor="dark" id='c5' /><Square squareColor="light"  id='d5' />
-        <Square squareColor="dark" id='e5' /><Square squareColor="light" id='f5' /><Square squareColor="dark" id='g5' /><Square squareColor="light"  id='h5' />
+        <Square squareColor="dark" id='a5' clickHandler={this.squareClicked}/><Square squareColor="light" id='b5' clickHandler={this.squareClicked}/><Square squareColor="dark" id='c5' clickHandler={this.squareClicked}/><Square squareColor="light"  id='d5' clickHandler={this.squareClicked}/>
+        <Square squareColor="dark" id='e5' clickHandler={this.squareClicked}/><Square squareColor="light" id='f5' clickHandler={this.squareClicked}/><Square squareColor="dark" id='g5' clickHandler={this.squareClicked}/><Square squareColor="light"  id='h5' clickHandler={this.squareClicked}/>
       </tr>
 
       <tr>
-        <Square squareColor="light" id='a4' /><Square squareColor="dark" id='b4' /><Square squareColor="light" id='c4' /><Square squareColor="dark"  id='d4' />
-        <Square squareColor="light" id='e4' /><Square squareColor="dark" id='f4' /><Square squareColor="light" id='g4' /><Square squareColor="dark"  id='h4' />
+        <Square squareColor="light" id='a4' clickHandler={this.squareClicked}/><Square squareColor="dark" id='b4' clickHandler={this.squareClicked}/><Square squareColor="light" id='c4' clickHandler={this.squareClicked}/><Square squareColor="dark"  id='d4' clickHandler={this.squareClicked}/>
+        <Square squareColor="light" id='e4' clickHandler={this.squareClicked}/><Square squareColor="dark" id='f4' clickHandler={this.squareClicked}/><Square squareColor="light" id='g4' clickHandler={this.squareClicked}/><Square squareColor="dark"  id='h4' clickHandler={this.squareClicked}/>
       </tr>
 
       <tr>
-        <Square squareColor="dark" id='a3' /><Square squareColor="light" id='b3' /><Square squareColor="dark" id='c3' /><Square squareColor="light"  id='d3' />
-        <Square squareColor="dark" id='e3' /><Square squareColor="light" id='f3' /><Square squareColor="dark" id='g3' /><Square squareColor="light"  id='h3' />
+        <Square squareColor="dark" id='a3' clickHandler={this.squareClicked}/><Square squareColor="light" id='b3' clickHandler={this.squareClicked}/><Square squareColor="dark" id='c3' clickHandler={this.squareClicked}/><Square squareColor="light"  id='d3' clickHandler={this.squareClicked}/>
+        <Square squareColor="dark" id='e3' clickHandler={this.squareClicked}/><Square squareColor="light" id='f3' clickHandler={this.squareClicked}/><Square squareColor="dark" id='g3' clickHandler={this.squareClicked}/><Square squareColor="light"  id='h3' clickHandler={this.squareClicked}/>
       </tr>
 
       <tr>
-        <Square squareColor="light" id='a2' /><Square squareColor="dark" id='b2' /><Square squareColor="light" id='c2' /><Square squareColor="dark"  id='d2' />
-        <Square squareColor="light" id='e2' /><Square squareColor="dark" id='f2' /><Square squareColor="light" id='g2' /><Square squareColor="dark"  id='h2' />
+        <Square squareColor="light" piece="♙" id='a2' clickHandler={this.squareClicked}/><Square squareColor="dark" piece="♙" id='b2' clickHandler={this.squareClicked}/><Square squareColor="light" piece="♙" id='c2' clickHandler={this.squareClicked}/><Square squareColor="dark" piece="♙" id='d2' clickHandler={this.squareClicked}/>
+        <Square squareColor="light" piece="♙" id='e2' clickHandler={this.squareClicked}/><Square squareColor="dark" piece="♙" id='f2' clickHandler={this.squareClicked}/><Square squareColor="light" piece="♙" id='g2' clickHandler={this.squareClicked}/><Square squareColor="dark" piece="♙" id='h2' clickHandler={this.squareClicked}/>
       </tr>
 
       <tr>
-        <Square squareColor="dark" id='a1' /><Square squareColor="light" id='b1' /><Square squareColor="dark" id='c1' /><Square squareColor="light"  id='d1' />
-        <Square squareColor="dark" id='e1' /><Square squareColor="light" id='f1' /><Square squareColor="dark" id='g1' /><Square squareColor="light"  id='h1' />
+        <Square squareColor="dark" piece="♖" id='a1' clickHandler={this.squareClicked}/><Square squareColor="light" piece="♘" id='b1' clickHandler={this.squareClicked}/><Square squareColor="dark" piece="♗" id='c1' clickHandler={this.squareClicked}/><Square squareColor="light" piece="♕" id='d1' clickHandler={this.squareClicked}/>
+        <Square squareColor="dark" piece="♔" id='e1' clickHandler={this.squareClicked}/><Square squareColor="light" piece="♗" id='f1' clickHandler={this.squareClicked}/><Square squareColor="dark" piece="♘" id='g1' clickHandler={this.squareClicked}/><Square squareColor="light" piece="♖" id='h1' clickHandler={this.squareClicked}/>
       </tr>
 
-    </table>);
+    </tbody></table>);
   }
 }
 
