@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ColorLogo from './ColorLogo.js';
+import Square from './Square.js';
+import Board from './Board.js';
 import './App.css';
 
 class App extends Component {
@@ -7,12 +9,15 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <ColorLogo />
+
+          <Board />
 
           <p />
 
-          <p>Click on the logo to change its color</p>
+          <ColorLogo />
+
           <p className="yellow-and-snow-not-good">☃</p>
+
         </header>
       </div>
     );

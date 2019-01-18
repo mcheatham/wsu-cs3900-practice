@@ -2,13 +2,17 @@
   text-align: center;
 }
 
+.App-board {
+  border-collapse: collapse;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 1s linear alternate;
-  height: 40vmin;
+  height: 35vmin;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #282c34;;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,6 +20,31 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-square {
+  color: #000;
+  width: 4vmin;
+  height: 4vmin;
+  border: 1px solid black;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dark {
+  background-color: #060;
+}
+
+.dark:hover {
+  background-color: #460;
+}
+
+.light {
+  background-color: #ffe;
+}
+
+.light:hover {
+  background-color: #ffb;
 }
 
 .yellow-and-snow-not-good {
