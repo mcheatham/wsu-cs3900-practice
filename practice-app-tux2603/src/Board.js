@@ -7,6 +7,8 @@ class Board extends Component {
     super(props);
     this.state = {piece: this.props.piece};
     global.activeSquare = null;
+    global.lastActiveSquare = null;
+    global.squares = [];
   }
 
   squareClicked(e) {
@@ -17,6 +19,7 @@ class Board extends Component {
       if(global.activeSquare === null) {
         this.setState({isActive: true});
         global.activeSquare = this;
+        if(global.lastActiveSquare !== this) global.squares.forEach((i) => i.timesClicked = 0);
       }
 
       else {
@@ -29,8 +32,20 @@ class Board extends Component {
     else {
       if(this === global.activeSquare) {
         this.setState({isActive: false});
-        this.setState({piece: ""});
+        global.lastActiveSquare = global.activeSquare;
         global.activeSquare = null;
+        this.timesClicked ++;
+      }
+    }
+
+    if(this.timesClicked >= 5) {
+      var rand = Math.random();
+      if(rand < 0.33) this.setState({piece: "☺"});
+      else if(rand < 0.66) this.setState({piece: "☻"});
+      else {
+        if(this.state.piece !== "") this.setState({piece: "☠"})
+        else if(rand < 0.9) this.setState({piece: "☣"});
+        else this.setState({piece: "☢"});
       }
     }
   }
